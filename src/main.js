@@ -6,6 +6,9 @@ import store from './store/store'
 
 Vue.config.productionTip = false
 
+import VueGoogleCharts from 'vue-google-charts'
+Vue.use(VueGoogleCharts)
+
 new Vue({
   router,
   store,

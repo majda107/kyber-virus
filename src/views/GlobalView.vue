@@ -1,17 +1,17 @@
 <template>
   <div class="containter">
-    <Display />
+    <GlobalChart/>
   </div>
 </template>
 
 <script>
 
-import Display from "../components/Display";
+import GlobalChart from "../components/GlobalChart"
 
 export default {
   name: "HomeView",
   components: {
-    Display,
+    GlobalChart
   },
   props: {}
 };

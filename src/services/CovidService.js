@@ -36,5 +36,9 @@ export default {
 
     queryStatistics(country) {
         return this.callEndpoint(`statistics?country=${country}`)
+    },
+
+    queryHistory(country) {
+        return this.callEndpoint(`history?country=${country}`)
     }
 }

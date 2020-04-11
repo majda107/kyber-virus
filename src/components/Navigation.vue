@@ -1,9 +1,10 @@
 <template>
   <div class="containter">
     <div class="navigation">
-      <span class="navigation-link">Home</span>
-      <span class="navigation-link">Global</span>
-      <span class="navigation-link">Search</span>
+      <router-link to="/home" class="navigation-link">HOME</router-link>
+      <router-link to="/global" class="navigation-link">GLOBAL</router-link>
+      <router-link to="/search" class="navigation-link">SEARCH</router-link>
+      <router-link to="/prevention" class="navigation-link">PREVENTION</router-link>
     </div>
   </div>
 </template>
@@ -18,19 +19,34 @@ export default {
 @import '../../sass/abstracts/variables'
 
 .containter
-    background-color: $secondary-color
-    display: grid
-    justify-content: center
+  display: grid
+  justify-content: center
+  justify-items: center
+  z-index: 1000
 
 .navigation
-    padding: 10px
-    display: grid
-    grid-auto-flow: column
-    column-gap: 20px
+  padding: 30px
+  display: grid
+  grid-auto-flow: column
+  column-gap: 60px
 
-    &-link
-        color: $white-color
-        font-weight: 400
-        font-size: 1.1rem
+  &-link
+    color: $white-color
+    font-weight: 200
+    font-size: 1.8rem
+    text-decoration: none
+    transition: color .5s
 
+  &-link::after
+    font-weight: 500
+    font-size: 1.8rem
+    content: attr(title)
+    visibility: hidden
+    overflow: hidden
+
+  &-link:hover
+    color: $primary-color
+
+.link-active
+  font-weight: 500
 </style>

@@ -6,7 +6,7 @@ import GlobalView from './views/GlobalView.vue'
 
 Vue.use(Router)
 
-const linkActiveClass = 'my-link-active-class'
+const linkActiveClass = 'link-active'
 
 export default new Router({
     routes: [

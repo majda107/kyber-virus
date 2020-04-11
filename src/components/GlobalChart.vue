@@ -4,8 +4,9 @@
     <GChart
       type="GeoChart"
       :data="getGlobalChart"
-      :options="{  colorAxis: {colors: ['#ef962d', '#363636']},
-          datalessRegionColor: '#faf4f4',
+      :options="{  colorAxis: {colors: ['#FF9900', '#FF3D00']},
+          datalessRegionColor: '#FFDAA3',
+          backgroundColor: '#0C0D0E',
           defaultColor: '#f5f5f5'}"
     />
   </div>

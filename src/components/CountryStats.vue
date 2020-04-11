@@ -47,7 +47,7 @@ export default {
 @import '../../sass/abstracts/variables'
 
 .container
-    background-color: $dark-color
+    // background-color: $dark-color
     border-radius: 10px
 
 .stats
@@ -56,11 +56,11 @@ export default {
     justify-content: center
     grid-template-areas: 'name name' 'cases deaths' 'cases tests' 
     grid-template-rows: auto auto auto
-    column-gap: 60px
+    column-gap: 80px
     row-gap: 40px
 
     &-name
-        font-size: 1.8rem
+        font-size: 1.9rem
         grid-area: name
 
     &-cases, &-deaths, &-tests
@@ -72,7 +72,7 @@ export default {
             grid-column-start: 1
             grid-column-end: 3
             justify-self: flex-start
-            font-size: 1.6rem
+            font-size: 1.7rem
             font-weight: 400
 
         &-label

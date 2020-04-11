@@ -11,6 +11,8 @@ const getters = {
         // alert(`getting country ${query}`)
         // console.log(state.statistics)
         // console.log(query)
+        if(state.statistics == null) return null
+
         query = query.toLowerCase()
         let item = state.statistics.find(entry => {
             // console.log(entry.country)

@@ -2,11 +2,13 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <HomeView/> -->
-    <div class="navigation">
-      <Navigation/>
+    <div class="navigation-bar">
+      <Navigation />
     </div>
     <div class="view">
-      <router-view />
+      <transition name="fade">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
@@ -16,7 +18,7 @@
 // import HomeView from './views/HomeView'
 import { mapActions } from "vuex";
 
-import Navigation from './components/Navigation'
+import Navigation from "./components/Navigation";
 
 export default {
   name: "App",
@@ -58,15 +60,22 @@ body {
   padding: 0
   margin: 0
 
+#app
+  position: relative
+
+.navigation-bar
+  position: absolute
+  width: 100%
+  z-index: 1000
+
 body
-  background-color: $darker-color
+  background-color: $background-color
 
-.view
-  width: 92%
-  margin-left: auto
-  margin-right: auto
-  margin-top: 60px
-
+// .view
+//   width: 92%
+//   margin-left: auto
+//   margin-right: auto
+//   margin-top: 60px
 
 input, button
   background-color: $dark-color
@@ -75,4 +84,10 @@ input, button
   border: none
   padding: 4px 8px 4px 8px
 
+.fade-enter-active, .fade-leave-active
+  transition: opacity .5s
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  opacity: 0
+  position: absolute
 </style>

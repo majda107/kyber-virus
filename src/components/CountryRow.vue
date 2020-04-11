@@ -2,30 +2,12 @@
   <div class="row">
     <div v-if="country != null" class="row-graph1">
       <div class="row-chart">
-        <!-- <GChart
-          type="LineChart"
-          :data="infectedData"
-          :options="{
-          curveType: 'function',
-          backgroundColor: '#1B1B25',
-          legend: { position: 'bottom' },
-        }"
-          :resizeDebounce="500"
-        />-->
         <LineChart :chart-data="infectedData" />
       </div>
     </div>
     <div v-if="country != null" class="row-graph2">
       <div class="row-chart">
-        <!-- <GChart
-          type="PieChart"
-          :data="pieData"
-          :options="{
-          backgroundColor: '#1B1B25'}"
-          :resizeDebounce="500"
-        />-->
-        <!-- <LineChart :chart-data="infectedData" /> -->
-        <PieChart :chart-data="pieData" />
+        <DoughtnutChart :chart-data="pieData" />
       </div>
     </div>
     <div v-if="country != null" class="row-stats">
@@ -37,7 +19,7 @@
 <script>
 import CountryStats from "./CountryStats";
 import LineChart from "./LineChart";
-import PieChart from "./PieChart";
+import DoughtnutChart from "./DoughnutChart";
 // import { GChart } from "vue-google-charts";
 
 import CovidService from "../services/CovidService";
@@ -51,7 +33,7 @@ export default {
     CountryStats,
     // GChart,
     LineChart,
-    PieChart
+    DoughtnutChart
   },
   data: function() {
     return {
@@ -105,7 +87,8 @@ export default {
         datasets: [
           {
             backgroundColor: ["#FF0000", "#00FF00", "#AAAAFF", "#FFFF00"],
-            borderWidth: [1, 1, 1, 1],
+            borderWidth: [3, 3, 3, 3],
+            borderColor: ["#1B1B25", "#1B1B25", "#1B1B25", "#1B1B25"],
             label: "Status",
             data: []
           }
@@ -145,10 +128,11 @@ export default {
   justify-content: center
   width: 100%
   grid-template-columns: 30% 30% 1fr
+  grid-template-rows: 300px
 
   &-chart
-    height: 300px
-    padding: 10px
+    height: 280px
+    padding: 24px
     background-color: $chart-color
     border-radius: 6px
     @include elevation()
@@ -164,9 +148,9 @@ export default {
 
 @media screen and ( max-width: 1480px )
   .row
-    grid-template-areas: 'stats' 'graph1' 'graph2'
-    grid-template-columns: 1fr
-    grid-template-rows: auto auto auto
+    grid-template-areas: 'stats' 'graph2' 'graph1'
+    grid-template-columns: 100%
+    grid-template-rows: auto 400px 400px
     row-gap: 80px
   
 </style>

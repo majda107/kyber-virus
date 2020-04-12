@@ -53,7 +53,7 @@ export default {
 .stats
     display: grid
     padding: 20px
-    justify-content: center
+    // justify-content: center
     grid-template-areas: 'name name' 'cases deaths' 'cases tests' 
     grid-template-rows: auto auto auto
     column-gap: 80px
@@ -78,11 +78,13 @@ export default {
         &-label
             justify-self: flex-start
             font-weight: 100
+            font-size: 1.1rem
 
         &-value
             justify-self: flex-end
             font-weight: 500
             color: $primary-color
+            font-size: 1.1rem
 
     &-cases
         grid-area: cases

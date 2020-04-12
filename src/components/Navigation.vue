@@ -1,10 +1,10 @@
 <template>
   <div class="containter">
     <div class="navigation">
-      <router-link to="/home" class="navigation-link">HOME</router-link>
-      <router-link to="/global" class="navigation-link">GLOBAL</router-link>
-      <router-link to="/search" class="navigation-link">SEARCH</router-link>
-      <router-link to="/prevention" class="navigation-link">PREVENTION</router-link>
+      <router-link to="/home" draggable="false" class="navigation-link">HOME</router-link>
+      <router-link to="/global" draggable="false" class="navigation-link">GLOBAL</router-link>
+      <router-link to="/search" draggable="false" class="navigation-link">SEARCH</router-link>
+      <router-link to="/prevention"  class="navigation-link">PREVENTION</router-link>
     </div>
   </div>
 </template>
@@ -32,13 +32,16 @@ export default {
 
   &-link
     color: $white-color
-    font-weight: 200
+    // font-weight: 200
+    font-weight: 500
     font-size: 1.8rem
     text-decoration: none
     transition: color .5s
+    user-select: none
+    opacity: 0.35
+    transition: opacity 300ms, color 300ms
 
   &-link::after
-    font-weight: 500
     font-size: 1.8rem
     content: attr(title)
     visibility: hidden
@@ -46,7 +49,9 @@ export default {
 
   &-link:hover
     color: $primary-color
+    opacity: 1.0
 
 .link-active
   font-weight: 500
+  opacity: 1.0
 </style>

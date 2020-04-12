@@ -20,9 +20,9 @@
 import CountryStats from "./CountryStats";
 import LineChart from "./LineChart";
 import DoughtnutChart from "./DoughnutChart";
-// import { GChart } from "vue-google-charts";
 
 import CovidService from "../services/CovidService";
+import GraphService from "../services/GraphService"
 
 import { mapGetters } from "vuex";
 
@@ -52,58 +52,11 @@ export default {
     },
 
     infectedData: function() {
-      if (this.history == null) return [];
-
-      let data = {
-        labels: [],
-        datasets: [
-          {
-            label: "Active infections",
-            backgroundColor: "#FF0000",
-            data: []
-          }
-        ]
-      };
-
-      let counter = 0;
-      for (let entry of this.history) {
-        data.labels.push(counter++);
-        data.datasets[0].data.push(entry.cases.active);
-
-        if (counter > 50) break;
-      }
-      // data.datasets[0].data = this.history.map((entry) => {
-      //   return entry.cases.active;
-      // });
-
-      // data.datasets = data.datasets.slice(1, 10);
-
-      return data;
+      return GraphService.mapInfected(this.history, 20)
     },
 
     pieData: function() {
-      let data = {
-        labels: [],
-        datasets: [
-          {
-            backgroundColor: ["#FF0000", "#00FF00", "#AAAAFF", "#FFFF00"],
-            borderWidth: [3, 3, 3, 3],
-            borderColor: ["#1B1B25", "#1B1B25", "#1B1B25", "#1B1B25"],
-            label: "Status",
-            data: []
-          }
-        ]
-      };
-
-      let entries = this.getCountryStatistics(this.name).cases;
-      for (let entry in entries) {
-        if (entry == "total") continue;
-        data.labels.push(entry);
-        data.datasets[0].data.push(parseInt(entries[entry]));
-        // data.datasets.push({ label:entry, data: [parseInt(entries[entry])] })
-      }
-
-      return data;
+      return GraphService.mapPieData(this.country)
     }
   },
   created: function() {
@@ -139,18 +92,20 @@ export default {
 
   &-stats
     grid-area: stats
+    max-width: 700px
+    justify-self: center
 
-    &-graph1
-      grid-area: graph1
+  &-graph1
+    grid-area: graph1
 
-    &-graph2
-      grid-area: graph2
+  &-graph2
+    grid-area: graph2
 
 @media screen and ( max-width: 1480px )
   .row
     grid-template-areas: 'stats' 'graph2' 'graph1'
     grid-template-columns: 100%
     grid-template-rows: auto 400px 400px
-    row-gap: 80px
+    row-gap: 60px
   
 </style>

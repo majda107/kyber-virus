@@ -54,4 +54,9 @@ export default {
 
   &-input
     padding: 60px
+
+  &-country
+    margin-left: auto
+    margin-right: auto
+    max-width: 700px
 </style>

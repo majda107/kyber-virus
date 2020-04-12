@@ -4,9 +4,10 @@
     <GChart
       type="GeoChart"
       :data="getGlobalChart"
+      :settings="{packages: ['geochart'], mapsApiKey: ''}"
       :options="{  colorAxis: {colors: ['#FF9900', '#FF3D00']},
           datalessRegionColor: '#FFDAA3',
-          backgroundColor: '#0B0B15',
+          backgroundColor: 'transparent',
           defaultColor: '#f5f5f5'}"
     />
   </div>
@@ -27,3 +28,8 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.containter
+  width: 100%
+</style>

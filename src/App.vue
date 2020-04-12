@@ -55,6 +55,7 @@ body {
 
 <style lang="sass">
 @import '../sass/abstracts/variables'
+@import '../sass/abstracts/mixins'
 
 *
   color: $white-color
@@ -88,7 +89,8 @@ body
     position: absolute
 
 input, button
-  background-color: $dark-color
+  background-color: $chart-color
+  @include elevation()
   font-size: 1.4rem
   border-radius: 4px
   border: none

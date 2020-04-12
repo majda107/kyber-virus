@@ -2,6 +2,7 @@
   <div class="container">
     <form class="form">
       <input
+        placeholder="search..."
         class="input"
         type="text"
         v-model="selection"
@@ -58,30 +59,31 @@ export default {
     },
 
     close() {
-      if (
-        this.matches.length > 0 &&
-        this.selected >= 0 &&
-        this.selected < this.matches.length
-      ) {
-        console.log("closing")
-        this.selection = this.matches[this.selected]
-        this.$emit("update:value", this.matches[this.selected])
-      }
+      this.updateSelection();
+      this.$emit("update:value", this.matches[this.selected]);
 
-      this.selected = 0
-      this.open = false
+      this.selected = 0;
+      this.open = false;
     },
 
     closePanel() {
-        this.open = false
+      this.open = false;
+    },
+
+    updateSelection() {
+      this.selection = this.matches[this.selected];
     },
 
     up() {
       this.selected -= 1;
+      if (this.selected < 0) this.selected = this.matches.length - 1;
+      this.updateSelection();
     },
 
     down() {
       this.selected += 1;
+      if (this.selected > this.matches.length - 1) this.selected = 0;
+      this.updateSelection();
     }
   }
 };
@@ -90,50 +92,49 @@ export default {
 <style lang="sass" scoped>
 @import '../../sass/abstracts/variables'
 
-.active 
-    background-color: $primary-color
-    font-weight: 500
-    color: $dark-color !important
-    
+.active
+  background-color: $primary-color
+  font-weight: 500
+  color: $dark-color !important
 
 .container
-    display: flex
-    justify-content: center
+  display: flex
+  justify-content: center
 
 .form
-    position: relative
-    
+  position: relative
+
 .input
-    position: relative
+  position: relative
 
 .suggestions
-    position: absolute
-    width: 100%
-    margin-top: 4px
+  position: absolute
+  width: 100%
+  margin-top: 4px
 
-    &-list
-        // width: 60%
-        background-color: $white-color
-        -webkit-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.24)
-        -moz-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.24)
-        box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.24)
-        border-radius: 6px
-        list-style-type: none
-        width: 80%
-        padding: 0
-        margin: 0
-        left: 0
+  &-list
+    background-color: $white-color
+    -webkit-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.24)
+    -moz-box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.24)
+    box-shadow: 10px 10px 45px 0px rgba(0,0,0,0.24)
+    border-radius: 6px
+    list-style-type: none
+    width: 80%
+    padding: 0
+    margin: 0
+    left: 0
 
-        li
-            border-radius: 4px
-            padding: 8px !important
-            color: $dark-color
-            text-decoration: none
+    li
+      border-radius: 4px
+      padding: 8px !important
+      color: $dark-color
+      text-decoration: none
+      transition: background 300ms
 
-        li:hover
-            color: $dark-color !important
-            cursor: pointer
-            font-weight: 500
-            background-color: $primary-color
-
+    li:hover
+      color: $dark-color !important
+      cursor: pointer
+      font-weight: 500
+      background-color: $primary-color
+      cursor: pointer
 </style>

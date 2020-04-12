@@ -23,7 +23,7 @@ export default {
   width: 100%
 
 .global
-  width: 74%
+  width: 64%
   padding-top: 160px
   margin-left: auto
   margin-right: auto

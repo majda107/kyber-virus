@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="stats">
+    <div class="stats" v-if="stats != null">
       <h2 class="stats-name">{{ stats.country }}</h2>
       <div class="stats-cases">
         <span class="stats-cases-header">Cases</span>

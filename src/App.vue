@@ -6,9 +6,11 @@
       <Navigation />
     </div>
     <div class="view">
+      <div class="view-inner">
       <transition name="fade">
         <router-view />
       </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -77,6 +79,14 @@ body
 //   margin-right: auto
 //   margin-top: 60px
 
+.view
+  position: relative
+  width: 100%
+
+  &-inner
+    width: 100%
+    position: absolute
+
 input, button
   background-color: $dark-color
   font-size: 1.4rem
@@ -90,4 +100,5 @@ input, button
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
   opacity: 0
   position: absolute
+  width: 100%
 </style>

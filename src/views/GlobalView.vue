@@ -1,12 +1,13 @@
 <template>
-  <div class="containter">
-    <GlobalChart/>
+  <div class="global-containter">
+    <div class="global">
+      <GlobalChart />
+    </div>
   </div>
 </template>
 
 <script>
-
-import GlobalChart from "../components/GlobalChart"
+import GlobalChart from "../components/GlobalChart";
 
 export default {
   name: "HomeView",
@@ -16,3 +17,14 @@ export default {
   props: {}
 };
 </script>
+
+<style lang="sass" scoped>
+.global-ontainter
+  width: 100%
+
+.global
+  width: 74%
+  padding-top: 160px
+  margin-left: auto
+  margin-right: auto
+</style>

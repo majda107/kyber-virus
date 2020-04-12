@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import HomeView from './views/HomeView.vue'
 import GlobalView from './views/GlobalView.vue'
+import SearchView from './views/SearchView.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
             path: '/global',
             name: 'global',
             component: GlobalView
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: SearchView
         }
     ],
     linkActiveClass

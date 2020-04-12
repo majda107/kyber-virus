@@ -6,7 +6,7 @@
       :data="getGlobalChart"
       :options="{  colorAxis: {colors: ['#FF9900', '#FF3D00']},
           datalessRegionColor: '#FFDAA3',
-          backgroundColor: '#0C0D0E',
+          backgroundColor: '#0B0B15',
           defaultColor: '#f5f5f5'}"
     />
   </div>

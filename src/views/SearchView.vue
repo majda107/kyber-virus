@@ -7,7 +7,7 @@
       <div class="search-country">
         <CountryStats v-bind:stats="data"/>
       </div>
-      <div class="search-graphs">
+      <div v-if="data != null" class="search-graphs">
         <ChartStats :country="country"/>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import HomeView from './views/HomeView.vue'
 import GlobalView from './views/GlobalView.vue'
 import SearchView from './views/SearchView.vue'
+import PreventionView from './views/PreventionView.vue'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
             path: '/search',
             name: 'search',
             component: SearchView
+        },
+        {
+            path: '/prevention',
+            name: 'prevention',
+            component: PreventionView
         }
     ],
     linkActiveClass

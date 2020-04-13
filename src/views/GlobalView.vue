@@ -10,7 +10,7 @@
 import GlobalChart from "../components/GlobalChart";
 
 export default {
-  name: "HomeView",
+  name: "GlobalView",
   components: {
     GlobalChart
   },

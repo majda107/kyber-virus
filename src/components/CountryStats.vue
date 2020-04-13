@@ -95,5 +95,13 @@ export default {
     &-tests
         grid-area: tests
 
+@media screen and ( max-width: 600px )
+  .stats
+    grid-template-areas: 'name' 'cases' 'deaths' 'tests'
+    grid-template-columns: 100%
+    justify-content: center
+    padding-left: 60px
+    padding-right: 60px
+
 </style>
 

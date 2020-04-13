@@ -1,20 +1,36 @@
 <template>
   <div class="prevention-container">
     <div class="prevention-background"></div>
-    <div class="landing">
-      <div class="landing-highlight">
-        <div class="landing-highlight-banner"></div>
-        <div class="landing-highlight-header">
-          <div class="landing-highlight-header-bar"></div>
-          <h1>Jak se chránit?</h1>
+    <div class="overlap">
+      <div class="landing">
+        <div class="landing-highlight">
+          <div class="landing-highlight-banner"></div>
+          <div class="landing-highlight-header">
+            <div class="landing-highlight-header-bar"></div>
+            <h1>Jak se chránit?</h1>
+          </div>
+        </div>
+        <div class="landing-text">
+          <p>Sicezatím nemáme lék proti koronaviru, je však stále možné chránit sebe a naše okolí... blah blah blah packet tracer je sračka</p>
         </div>
       </div>
-      <div class="landing-text">
-        <p>Sicezatím nemáme lék proti koronaviru, je však stále možné chránit sebe a naše okolí... blah blah blah packet tracer je sračka</p>
+      <div class="prevention">
+        <div class="prevention-block">
+          <PhotoBlock
+            :article="{ image: 'hands.jpg', header: 'Test header', text: 'One text boi no owo ipsum needed' }"
+          />
+        </div>
+        <div class="prevention-block">
+          <PhotoBlock
+            :article="{ image: 'hands.jpg', header: 'Test header', text: 'One text nigga' }"
+          />
+        </div>
+        <div class="prevention-block">
+          <PhotoBlock
+            :article="{ image: 'hands.jpg', header: 'Test header', text: 'One text nigga' }"
+          />
+        </div>
       </div>
-    </div>
-    <div class="prevention">
-      <PhotoBlock :article="{ image: 'hands.jpg', header: 'Test header', text: 'One text nigga' }" />
     </div>
   </div>
 </template>
@@ -37,7 +53,7 @@ export default {
 .prevention-background
   position: absolute
   height: 100vh
-  background-image: url('../assets/prevention.jpg')
+  background-image: url('../assets/prevention_t.png')
   background-size: cover
   background-position: center center
   opacity: 0.05
@@ -51,6 +67,7 @@ export default {
   display: grid
   grid-template-columns: 45% 1fr
   align-items: center
+  grid-area: landing
 
   &-text
     p
@@ -62,7 +79,7 @@ export default {
       line-height: 2.4rem
 
   &-highlight:hover
-    height: 760px
+    height: 740px
 
     &-banner
       @include elevation-hover()
@@ -111,11 +128,37 @@ export default {
     transform: translateY(0px)
 
 
+.overlap
+  display: grid
+  grid-template-rows: auto 100px auto
+  grid-template-areas: 'landing' 'landing' 'prevention'
+  grid-template-columns: 100%
+
 .prevention
+  z-index: 10000
+  grid-area: prevention
+  grid-row: 2/4
+  display: grid
+  grid-template-columns: 35% 1fr
+  row-gap: 60px
+  padding-left: 100px
+  padding-right: 100px
+
+  &-block
+    grid-column: 2/3
+
+  &-block:nth-child(even)
+    grid-column: 1/3
 
 @media screen and ( max-width: 1100px )
   .landing
     grid-template-columns: 90%
+
+  .prevention
+    grid-row: 3/4
+    grid-template-columns: 20% 1fr
+    padding-left: 60px
+    padding-right: 60px
 
 @media screen and ( max-width: 900px )
   .landing
@@ -127,4 +170,11 @@ export default {
       h1
         font-size: 3.2rem
 
+  .prevention
+    grid-template-columns: 1fr
+    padding-left: 40px
+    padding-right: 40px
+
+    &-block
+      grid-column: 1/2
 </style>

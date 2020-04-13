@@ -21,6 +21,7 @@ export default {
     grid-template-rows: auto auto auto
     grid-template-columns: auto 1fr
     column-gap: 60px
+    row-gap: 20px
 
     &-image
         grid-area: image
@@ -29,10 +30,21 @@ export default {
     &-header
         grid-area: header
         text-align: left
+        font-size: 2.2rem
 
     &-text
         grid-area: text
         text-align: left
         justify-self: flex-start
+        color: #8C8C8C
+        font-size: 1.4rem
+        font-weight: 500
 
+@media screen and ( max-width:  1100px)
+    .block-image
+        width: 280px
+
+@media screen and ( max-width: 900px)
+    .block-image
+        width: 200px
 </style>

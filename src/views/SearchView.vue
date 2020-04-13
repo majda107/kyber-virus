@@ -17,6 +17,8 @@
 <script>
 import { mapGetters } from "vuex";
 
+import CovidService from '../services/CovidService'
+
 import Autocomplete from "../components/Autocomplete"
 import CountryStats from "../components/CountryStats"
 import ChartStats from "../components/ChartStats"
@@ -40,6 +42,12 @@ export default {
       if(this.country == "") return null
       return this.getCountryStatistics(this.country)
     }
+  },
+  created: function() {
+    console.log("CALLING FOR HISTORY....")
+    CovidService.queryPast("czechia", 20).then((values) => {
+      console.log(values)
+    })
   }
 };
 </script>

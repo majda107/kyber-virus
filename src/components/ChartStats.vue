@@ -2,7 +2,8 @@
   <div class="detailed-container">
     <div class="detailed">
       <div class="detailed-chart">
-        <LineChart :chart-data="infectedData" />
+        <LineChart v-if="infectedData != null" :chart-data="infectedData" />
+        <h2 v-else>Fetching history...</h2>
       </div>
       <div class="detailed-chart">
         <DoughnutChart :chart-data="pieData" />
@@ -29,14 +30,15 @@ export default {
   },
   data: () => {
     return {
-      history: null
+      history: null,
+      infectedData: null
     };
   },
   computed: {
     ...mapGetters(["getCountryStatistics"]),
-    infectedData: function() {
-      return GraphService.mapInfected(this.history, 50);
-    },
+    // infectedData: function() {
+    //   return GraphService.mapInfected(this.history, 50);
+    // },
 
     pieData: function() {
       return GraphService.mapPieData(this.getCountryStatistics(this.country));
@@ -48,6 +50,10 @@ export default {
       CovidService.queryHistory(val).then(data => {
         this.history = data.response;
       });
+
+      GraphService.mapInfectedPast(val, 20).then(result => {
+        this.infectedData = result;
+      });
     }
   }
 };
@@ -58,23 +64,33 @@ export default {
 @import '../../sass/abstracts/mixins'
 
 .detailed-container
-    width: 80%
-    margin-left: auto
-    margin-right: auto
+  width: 80%
+  margin-left: auto
+  margin-right: auto
 
 .detailed
-    display: grid
-    grid-template-columns: 45% 45%
-    column-gap: 10%
+  display: grid
+  grid-template-columns: 45% 45%
+  column-gap: 10%
+  row-gap: 60px
 
-    &-chart
-        padding: 20px
-        background-color: $chart-color
-        border-radius: 8px
-        @include elevation()
-        height: 400px
+  &-chart
+    padding: 20px
+    background-color: $chart-color
+    border-radius: 8px
+    @include elevation()
+    height: 400px
+    display: flex
+    justify-content: center
+    align-items: center
+
+  h2
+    color: $white-color
+    opacity: 0.3
+    font-size: 1.6rem
+    font-weight: 500
 
 @media screen and ( max-width: 1100px )
-    .detailed
-        grid-template-columns: 100%
+  .detailed
+    grid-template-columns: 100%
 </style>

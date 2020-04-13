@@ -40,5 +40,27 @@ export default {
 
     queryHistory(country) {
         return this.callEndpoint(`history?country=${country}`)
+    },
+
+    queryPast(country, cap = 10) {
+        let date = new Date()
+        let promises = []
+        for(let i = 0; i < cap; i++)
+        {
+            let iso = date.toISOString().split('T')[0]
+            promises.push(this.callEndpoint(`history?country=${country}&day=${iso}`))
+            date = new Date(date.getTime() - 24*60*60*1000)
+        }
+
+        return new Promise((resolve) => {
+            let result = {}
+            Promise.all(promises).then(values => {
+                for(let value of values) {
+                    result[value.parameters.day] = value.response[0]
+                }
+
+                resolve(result)
+            })
+        }) 
     }
 }

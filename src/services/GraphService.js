@@ -12,12 +12,14 @@ export default {
         }
     },
 
-    buildData(pastEntries, path, label = "", color = "#FFFFFF") {
+    buildData(pastEntries, path, label = "", color = "#FFFFFF", fill = true) {
         let paths = path.split('.')
 
         let data = this.dataBase()
         data.datasets[0].label = label
         data.datasets[0].backgroundColor = color
+        data.datasets[0].borderColor = color
+        data.datasets[0].fill = fill
 
         let added = false
         for (let date in pastEntries) {
@@ -61,7 +63,15 @@ export default {
                 for(let template of templates) {
                     if(template.path == undefined) continue
 
-                    datas[template.path] = this.buildData(past, template.path, template.label, template.color)
+                    datas[template.path] = this.buildData(past, template.path, template.label, template.color, template.fill == undefined ? true : template.fill)
+
+                    if(template.additional == undefined) continue
+
+                    for(let additional of template.additional) {
+                        let data = this.buildData(past, additional.path, additional.label, additional.color, additional.fill == undefined ? true : additional.fill)
+
+                        datas[template.path].datasets.push(data.datasets[0])
+                    }
                 }
 
                 resolve(datas)
@@ -94,7 +104,25 @@ export default {
         //     })
         // })
 
-        return this.mapPast(country, cap, "cases.active", "Active cases", "rgba(255, 255, 255, 0.35)")
+        let templates = [
+            { path: "cases.active", label: "Active cases", color: "rgba(255, 255, 255, 0.35)" },
+            { path: "deaths.total", label: "Total deaths", color: "rgba(255, 25, 25, 0.35)" }
+          ]
+
+        return new Promise(resolve => {
+            this.mapPasts(country, cap, templates).then(datas => {
+                let data = datas["cases.active"]
+                data.datasets.push(datas["deaths.total"].datasets[0])
+
+                resolve(data)
+            }) 
+        })
+        
+
+        // 
+
+        // return datas["cases.active"]
+        // return this.mapPast(country, cap, "cases.active", "Active cases", "rgba(255, 255, 255, 0.35)")
     },
 
     mapInfected(history, cap = 50) {
@@ -127,9 +155,11 @@ export default {
             labels: [],
             datasets: [
                 {
-                    backgroundColor: ["#FF0000", "#00FF00", "#AAAAFF", "#FFFF00"],
-                    borderWidth: [3, 3, 3, 3],
-                    borderColor: ["#1B1B25", "#1B1B25", "#1B1B25", "#1B1B25"],
+                    backgroundColor: ["rgba(255,140,0, 0.4)", "rgba(255, 255, 255, 0.55)", "rgba(255, 25, 25, 0.55)", "rgba(110, 230, 110, 0.4)"],
+                    borderColor: ["rgba(255,140,0, 0.8)", "rgba(255, 255, 255, 0.55)", "rgba(255, 25, 25, 0.95)", "rgba(110, 230, 110, 0.9)"],
+                    borderWidth: [2, 2, 2, 2],
+                    borderAlign: 'inner',
+                    // borderColor: ["#1B1B25", "#1B1B25", "#1B1B25", "#1B1B25"],
                     label: "Status",
                     data: []
                 }

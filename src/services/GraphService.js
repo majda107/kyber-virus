@@ -23,8 +23,8 @@ export default {
         for (let date in pastEntries) {
             let value = pastEntries[date]
             for (let valuePath of paths) {
-                value = value[valuePath]
                 if (value == undefined) continue
+                value = value[valuePath]
             }
 
             if (value == undefined) continue
@@ -48,6 +48,23 @@ export default {
                 if(data == null) reject()
 
                 resolve(data)
+            })
+        })
+    },
+
+    mapPasts(country, cap = 20, templates) {
+        return new Promise((resolve, reject) => {
+            if(country == "" || cap <= 0 || templates.length <= 0) reject()
+
+            CovidService.queryPast(country, cap).then((past) => {
+                let datas = { }
+                for(let template of templates) {
+                    if(template.path == undefined) continue
+
+                    datas[template.path] = this.buildData(past, template.path, template.label, template.color)
+                }
+
+                resolve(datas)
             })
         })
     },

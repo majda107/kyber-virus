@@ -8,6 +8,11 @@
       <div class="detailed-chart">
         <DoughnutChart :chart-data="pieData" />
       </div>
+      <div class="detailed-chart" v-for="(data, index) in mixedData" :key="`graph-${index}`">
+        <LineChart v-if="data != null" :chart-data="data" />
+        <h2 v-else>Fetching history...</h2>
+        <!-- {{ data }} -->
+      </div>
     </div>
   </div>
 </template>
@@ -31,7 +36,8 @@ export default {
   data: () => {
     return {
       history: null,
-      infectedData: null
+      infectedData: null,
+      mixedData: null
     };
   },
   computed: {
@@ -54,6 +60,16 @@ export default {
       GraphService.mapInfectedPast(val, 20).then(result => {
         this.infectedData = result;
       });
+
+      let templates = [
+        { path: "cases.active", label: "Active burecs", color: "#FF0000" },
+        { path: "deaths.total", label: "Total deaths", color: "#00FF00" },
+        { path: "cases.recovered", label: "Recovered cases", color: "#00FF00" },
+        { path: "cases.new", label: "New cases", color: "#FF0000" }
+      ]
+      GraphService.mapPasts(val, 20, templates).then(datas => {
+        this.mixedData = datas
+      })
     }
   }
 };
@@ -70,19 +86,19 @@ export default {
 
 .detailed
   display: grid
-  grid-template-columns: 45% 45%
-  column-gap: 10%
+  grid-template-columns: 47% 47%
+  column-gap: 6%
   row-gap: 60px
 
   &-chart
     padding: 20px
     background-color: $chart-color
     border-radius: 8px
-    @include elevation()
     height: 400px
     display: flex
     justify-content: center
     align-items: center
+    @include elevation()
 
   h2
     color: $white-color

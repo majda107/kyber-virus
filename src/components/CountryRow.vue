@@ -2,7 +2,8 @@
   <div class="row">
     <div v-if="country != null" class="row-graph1">
       <div class="row-chart">
-        <LineChart :chart-data="infectedData" />
+        <LineChart v-if="infectedData != null" :chart-data="infectedData" />
+        <h2 v-if="fetching">Fetching data...</h2>
       </div>
     </div>
     <div v-if="country != null" class="row-graph2">
@@ -22,7 +23,7 @@ import LineChart from "./LineChart";
 import DoughtnutChart from "./DoughnutChart";
 
 import CovidService from "../services/CovidService";
-import GraphService from "../services/GraphService"
+import GraphService from "../services/GraphService";
 
 import { mapGetters } from "vuex";
 
@@ -37,7 +38,9 @@ export default {
   },
   data: function() {
     return {
-      history: null
+      history: null,
+      infectedData: null,
+      fetching: false
     };
   },
   methods: {
@@ -51,17 +54,23 @@ export default {
       return this.getCountryStatistics(this.name);
     },
 
-    infectedData: function() {
-      return GraphService.mapInfected(this.history, 20)
-    },
+    // infectedData: function() {
+    //   return GraphService.mapInfected(this.history, 20)
+    // },
 
     pieData: function() {
-      return GraphService.mapPieData(this.country)
+      return GraphService.mapPieData(this.country);
     }
   },
   created: function() {
     CovidService.queryHistory(this.name).then(data => {
       this.history = data.response;
+    });
+
+    this.fetching = true;
+    GraphService.mapInfectedPast(this.name, 25).then(result => {
+      this.infectedData = result;
+      this.fetching = false;
     });
   }
 };
@@ -88,7 +97,16 @@ export default {
     padding: 24px
     background-color: $chart-color
     border-radius: 6px
+    display: flex
+    justify-content: center
+    align-items: center
     @include elevation()
+
+    h2
+      color: $white-color
+      opacity: 0.3
+      font-size: 1.6rem
+      font-weight: 500
 
   &-stats
     grid-area: stats

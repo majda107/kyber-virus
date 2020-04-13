@@ -2,10 +2,13 @@
   <div class="search-containter">
     <div class="search">
       <div class="search-input">
-        <Autocomplete v-bind:collection="getCountries" :value.sync="city" />
+        <Autocomplete v-bind:collection="getCountries" :value.sync="country" />
       </div>
       <div class="search-country">
         <CountryStats v-bind:stats="data"/>
+      </div>
+      <div class="search-graphs">
+        <ChartStats :country="country"/>
       </div>
     </div>
   </div>
@@ -14,26 +17,28 @@
 <script>
 import { mapGetters } from "vuex";
 
-import Autocomplete from "../components/Autocomplete";
+import Autocomplete from "../components/Autocomplete"
 import CountryStats from "../components/CountryStats"
+import ChartStats from "../components/ChartStats"
 
 export default {
   name: "SearchView",
   components: {
     Autocomplete,
-    CountryStats
+    CountryStats,
+    ChartStats
   },
   props: {},
   data: () => {
     return {
-      city: ""
+      country: "",
     };
   },
   computed: {
     ...mapGetters(["getCountries", "getCountryStatistics"]),
     data: function() {
-      if(this.city == "") return null
-      return this.getCountryStatistics(this.city)
+      if(this.country == "") return null
+      return this.getCountryStatistics(this.country)
     }
   }
 };
@@ -50,13 +55,14 @@ export default {
 
 <style lang="sass" scoped>
 .search
-  padding-top: 100px
 
   &-input
-    padding: 60px
+    padding-top: 140px
+    padding-bottom: 40px
 
   &-country
     margin-left: auto
     margin-right: auto
     max-width: 700px
+    padding-bottom: 60px
 </style>

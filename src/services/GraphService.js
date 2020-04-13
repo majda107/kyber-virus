@@ -38,6 +38,8 @@ export default {
             ]
         };
 
+        if(stats == null) return data
+
         for (let entry in stats.cases) {
             if (entry == "total") continue;
             data.labels.push(entry);

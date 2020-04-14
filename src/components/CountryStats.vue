@@ -100,8 +100,8 @@ export default {
     grid-template-areas: 'name' 'cases' 'deaths' 'tests'
     grid-template-columns: 100%
     justify-content: center
-    padding-left: 60px
-    padding-right: 60px
+    // padding-left: 20px
+    // padding-right: 60px
 
 </style>
 

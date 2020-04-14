@@ -39,6 +39,19 @@ export default {
 </script>
 
 <style>
+*::-webkit-scrollbar {
+  width: 4px;
+}
+ 
+*::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3); */
+  background-color: transparent
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(210, 210, 210, 0.5)
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

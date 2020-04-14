@@ -133,6 +133,7 @@ export default {
   grid-template-rows: auto 100px auto
   grid-template-areas: 'landing' 'landing' 'prevention'
   grid-template-columns: 100%
+  padding-bottom: 160px
 
 .prevention
   z-index: 10000

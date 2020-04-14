@@ -49,6 +49,8 @@ export default {
 
 .home
   padding-top: 200px
+  padding-bottom: 160px
+
   &-data
     width: 86%
     margin-left: auto
@@ -57,5 +59,9 @@ export default {
     grid-auto-flow: row
     row-gap: 80px
     grid-template-columns: 100%
+
+@media screen and ( max-width: 600px )
+  .home
+    padding-top: 120px
 
 </style>

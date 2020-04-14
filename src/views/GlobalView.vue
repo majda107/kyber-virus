@@ -82,7 +82,7 @@ export default {
   h1
     font-weight: 500
     opacity: 0.5
-    font-size: 2.6rem
+    font-size: 2.4rem
 
 .global-charts
   display: grid
@@ -91,5 +91,12 @@ export default {
   &-chart
     height: 300px
     padding: 80px
+
+@media screen and ( max-width: 1000px )
+.global-charts
+  padding-top: 100px
+  &-chart
+    padding: 20px
+  
 </style>
 

@@ -94,7 +94,8 @@ export default {
 
   &-chart
     height: 280px
-    padding: 24px
+    padding: 20px
+    // margin: 24px
     background-color: $chart-color
     border-radius: 6px
     display: flex
@@ -115,15 +116,24 @@ export default {
 
   &-graph1
     grid-area: graph1
+    height: 86%
 
   &-graph2
     grid-area: graph2
+    height: 86%
 
 @media screen and ( max-width: 1480px )
   .row
     grid-template-areas: 'stats' 'graph2' 'graph1'
     grid-template-columns: 100%
     grid-template-rows: auto 400px 400px
-    row-gap: 60px
+    row-gap: 20px
+
+    &-stats
+      width: 100%
+
+
+    &-chart
+      height: 100%
   
 </style>

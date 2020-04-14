@@ -1,5 +1,7 @@
 <template>
   <div class="search-containter">
+    <div class="search-background">
+    </div>
     <div class="search">
       <div class="search-input">
         <Autocomplete v-bind:collection="getCountries" :value.sync="country" />
@@ -53,16 +55,27 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.search
-  background-image: url('../assets/search.png')
-  width: 100%
+.search-background
   min-height: 100vh
+  width: 100%
+  background-image: url('../assets/search.png')
+  position: absolute
   background-size: cover
+  z-index: -10
+  opacity: 0.3
+  filter: blur(5px)
+
+.search
+  // background-image: url('../assets/search.png')
+  width: 100%
+  // min-height: 100vh
+  // background-size: cover
 
 </style>
 
 <style lang="sass" scoped>
 .search
+  padding-bottom: 160px
 
   &-input
     padding-top: 140px
@@ -73,4 +86,5 @@ export default {
     margin-right: auto
     max-width: 700px
     padding-bottom: 60px
+    width: 80%
 </style>

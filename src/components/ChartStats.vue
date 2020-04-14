@@ -86,9 +86,9 @@ export default {
 
 .detailed
   display: grid
-  grid-template-columns: 47% 47%
-  column-gap: 6%
-  row-gap: 60px
+  grid-template-columns: 48% 48%
+  column-gap: 4%
+  row-gap: 30px
 
   &-chart
     padding: 20px

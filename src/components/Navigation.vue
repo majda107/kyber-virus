@@ -8,10 +8,10 @@
       </div>
     </div>
     <div class="navigation" v-bind:class="{ active: open }">
-      <router-link to="/home" draggable="false" class="navigation-link">HOME</router-link>
-      <router-link to="/search" draggable="false" class="navigation-link">SEARCH</router-link>
-      <router-link to="/global" draggable="false" class="navigation-link">GLOBAL</router-link>
-      <router-link to="/prevention" class="navigation-link">PREVENTION</router-link>
+      <router-link to="/home" draggable="false" class="navigation-link" v-on:click.native="close()">HOME</router-link>
+      <router-link to="/search" draggable="false" class="navigation-link" v-on:click.native="close()">SEARCH</router-link>
+      <router-link to="/global" draggable="false" class="navigation-link" v-on:click.native="close()">GLOBAL</router-link>
+      <router-link to="/prevention" class="navigation-link" v-on:click.native="close()">PREVENTION</router-link>
     </div>
     <div class="kyberna">
       <span class="kyberna-text">Kyberna</span>
@@ -31,6 +31,10 @@ export default {
   methods: {
     handleOpen: function() {
       this.open = !this.open;
+    },
+
+    close: function() {
+      this.open = false
     }
   }
 };

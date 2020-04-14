@@ -47,4 +47,15 @@ export default {
 @media screen and ( max-width: 900px)
     .block-image
         width: 200px
+
+@media screen and (max-width: 600px)
+  .block
+    grid-template-areas: 'image' 'header' 'text'
+    column-gap: 20px
+
+    &-image
+      width: 160px
+
+    &-header
+      font-size: 1.6rem
 </style>

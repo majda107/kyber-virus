@@ -15,19 +15,9 @@
         </div>
       </div>
       <div class="prevention">
-        <div class="prevention-block">
+        <div class="prevention-block" v-for="article in articles" :key ="article.key">
           <PhotoBlock
-            :article="{ image: 'hands.jpg', header: 'Test header', text: 'One text boi no owo ipsum needed' }"
-          />
-        </div>
-        <div class="prevention-block">
-          <PhotoBlock
-            :article="{ image: 'hands.jpg', header: 'Test header', text: 'One text nigga' }"
-          />
-        </div>
-        <div class="prevention-block">
-          <PhotoBlock
-            :article="{ image: 'hands.jpg', header: 'Test header', text: 'One text nigga' }"
+            :article="article"
           />
         </div>
       </div>
@@ -42,6 +32,16 @@ export default {
   name: "PreventionView",
   components: {
     PhotoBlock
+  },
+  data: () => {
+    return {
+      articles: [
+        { image: 'hands.jpg', header: 'Mytí rukou', text: "Tím, že si budete mít ruce pravidelně a delší dobu, můžete zamezit přenosu nákazy." },
+        { image: 'hands.jpg', header: 'Dodržujte odstup', text: "Je těžké nestýkat se s námi blízkymi, ale tím, že nějako udobu omezíte kontakt s ostatními se můžeme zbavit viru úplně." },
+        { image: 'hands.jpg', header: 'Noste roušky', text: "Když budete nosit roušku, chráníte nejen sebe, ale i ostatní..." },
+        { image: 'hands.jpg', header: 'Zůstaňte doma', text: "Nechoďte ven, pokud to není nutné." }
+      ]
+    }
   }
 };
 </script>

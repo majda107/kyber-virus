@@ -20,7 +20,7 @@
         <span class="stats-deaths-header">Deaths</span>
 
         <span class="stats-deaths-label">Today</span>
-        <span class="stats-deaths-value">{{ stats.cases.new }}</span>
+        <span class="stats-deaths-value">{{ stats.deaths.new }}</span>
         <span class="stats-deaths-label">Total</span>
         <span class="stats-deaths-value">{{ stats.deaths.total }}</span>
       </div>
@@ -95,8 +95,6 @@ export default {
         // { path: "cases.new", label: "New cases", color: "rgba(255,140,0, 0.4)" },
         // { path: "tests.total", label: "Total tests", color: "rgba(50, 50, 250, 0.3)" },
         // { path: "cases.critical", label: "Critical cases", color: "rgba(250, 50, 50, 0.3)"
-.new
-
 .active
   color: rgba(210, 210, 210, 0.7)
 

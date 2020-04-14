@@ -87,16 +87,16 @@ export default {
 .global-charts
   display: grid
   grid-template-columns: 100%
+  padding-top: 100px
 
   &-chart
     height: 300px
-    padding: 80px
+    padding: 60px
 
-@media screen and ( max-width: 1000px )
-.global-charts
-  padding-top: 100px
-  &-chart
-    padding: 20px
-  
+@media screen and ( max-width: 600px )
+  .global-charts
+    &-chart
+      padding: 20px
+
 </style>
 

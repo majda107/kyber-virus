@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="landing-text">
-          <p>Sicezatím nemáme lék proti koronaviru, je však stále možné chránit sebe a naše okolí... blah blah blah packet tracer je sračka</p>
+          <p>Sicezatím nemáme lék proti koronaviru, je však stále možné chránit sebe a naše okolí... </p>
         </div>
       </div>
       <div class="prevention">
@@ -36,10 +36,10 @@ export default {
   data: () => {
     return {
       articles: [
-        { image: 'hands.jpg', header: 'Mytí rukou', text: "Tím, že si budete mít ruce pravidelně a delší dobu, můžete zamezit přenosu nákazy." },
-        { image: 'hands.jpg', header: 'Dodržujte odstup', text: "Je těžké nestýkat se s námi blízkymi, ale tím, že nějako udobu omezíte kontakt s ostatními se můžeme zbavit viru úplně." },
-        { image: 'hands.jpg', header: 'Noste roušky', text: "Když budete nosit roušku, chráníte nejen sebe, ale i ostatní..." },
-        { image: 'hands.jpg', header: 'Zůstaňte doma', text: "Nechoďte ven, pokud to není nutné." }
+        { image: 'hands.jpg', header: 'Mytí rukou', text: "Tím, že si budete mít ruce pravidelně a delší dobu, můžete zamezit přenosu nákazy.<br/><br/>Ruce si myjte alespoň jednu minutu, ideálně antibakteriálními přípravky / přípravky s obsahem alkoholu." },
+        { image: 'distance.jpg', header: 'Dodržujte odstup', text: "Je těžké nestýkat se s námi blízkymi, ale tím, že nějako udobu omezíte kontakt s ostatními se můžeme zbavit viru úplně. <br/><br/> V případech, kde se ostatním osobám nelze vyhnout úplně je dobré zachovat vzdálenost do dvou metrů." }, 
+        { image: 'veil.jpg', header: 'Noste roušky', text: "Když budete nosit roušku, chráníte nejen sebe, ale i ostatní... <br/><br/> Pokud nemáte přístup k roušce, můžete využít šátku, trička nebo jakéhokoliv kusu látky. Látku po každém použítí vyžehlete." },
+        { image: 'home.jpg', header: 'Zůstaňte doma', text: "Nechoďte ven, pokud to není nutné. <br/><br/> Do obchodů chodtě pouze, když to je nezbytné a snažte se vyhýbat přímemu kontaktu. Noste roušku a ochranné rukavice, po příchodu domů si ihned umyjte ruce a mezitím neprovádějte kontakt s dalšími věcmi." }
       ]
     }
   }
@@ -141,7 +141,7 @@ export default {
   grid-row: 2/4
   display: grid
   grid-template-columns: 35% 1fr
-  row-gap: 60px
+  row-gap: 80px
   padding-left: 100px
   padding-right: 100px
 

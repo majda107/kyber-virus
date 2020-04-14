@@ -5,7 +5,8 @@
       type="GeoChart"
       :data="getGlobalChart"
       :settings="{packages: ['geochart'], mapsApiKey: ''}"
-      :options="{  colorAxis: {colors: ['#FF9900', '#FF3D00']},
+      :options="{  
+          colorAxis: {colors: ['#FF9900', '#FF3D00']},
           datalessRegionColor: '#FFDAA3',
           backgroundColor: 'transparent',
           defaultColor: '#f5f5f5'}"
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+// colorAxis: {colors: ['#FF9900', '#FF3D00']},
 import { GChart } from "vue-google-charts";
 
 import { mapGetters } from "vuex";

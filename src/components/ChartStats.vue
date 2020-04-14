@@ -64,8 +64,8 @@ export default {
       let templates = [
         { path: "cases.recovered", label: "Recovered cases", color: "rgba(70, 200, 70)", fill: false , additional: [{ path: "deaths.total", label: "Total deaths", color: "rgba(200, 70, 70)", fill: false }] },
         { path: "cases.new", label: "New cases", color: "rgba(255,140,0, 0.4)" },
-        { path: "deaths.total", label: "Total deaths", color: "rgba(255, 100, 100, 0.4)" },
-        { path: "cases.critical", label: "Recovered cases", color: "#00FF00" }
+        { path: "tests.total", label: "Total tests", color: "rgba(50, 50, 250, 0.3)" },
+        { path: "cases.critical", label: "Critical cases", color: "rgba(250, 50, 50, 0.3)" }
       ]
       GraphService.mapPasts(val, 20, templates).then(datas => {
         this.mixedData = datas
